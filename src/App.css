@@ -1,0 +1,168 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#root {
+  background-image: url(http://ruwallpapers.ru/wallpapers/food/411_food_1920x1080.jpg);
+  
+  height: 100vh;
+}
+.color{
+  background-color:rgba(255,245,215,0.1);
+  width: 100%;
+  height: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 90%;
+  margin:  auto;
+  text-align: center;
+}
+.menuButton {
+  width: 70%;
+  margin: 0 auto 5px;
+  background-color: rgba(0,0,0,0.4);
+  cursor: pointer;
+  height: 35px;
+  border: none;
+  color: rgb(255, 255, 255);
+  transition: 0.2s;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  outline: none;
+}
+.menuButton:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: 0.2s;
+}
+.recipeButton{
+  width: 50%;
+  margin: 0 auto 5px;
+  background-color: rgba(0,0,0,0.4);
+  cursor: pointer;
+  height: 35px;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  transition: 0.2s;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  outline: none;
+}
+.recipeButton:hover{
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: 0.2s;
+}
+.viewRecipes {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  background-color:rgba(255,255,255,0.4);
+  justify-content: space-around;
+}
+.Menu {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  justify-content: center;
+  overflow: auto;
+}
+.windowShow {
+  width: 70%;
+  overflow: auto;
+  background-color:rgba(0,0,0,0.4);
+}
+.AddForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 70%;
+  height: 60%;
+  margin: 10% auto 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: 'Pacifico', cursive;
+  font-size: 25px;
+}
+
+.recipe {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+}
+.header {
+  font-family: 'Pacifico', cursive;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.recipeTitle {
+  font-family: 'Pacifico', cursive;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.recipeDes {
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: rgb(43, 43, 43);
+}
+textarea {
+  width: 90%; 
+  height: 40%; 
+  resize: none; 
+  margin: 0 auto 5px;
+  outline: none;
+ } 
+ input {
+   width: 90%;
+   outline: none;
+   margin: auto;
+ }
+ .headerMain {
+   width: 70%;
+   margin: 20% auto 0;
+   font-family: 'Pacifico', cursive;
+   font-size: 30px;
+ }
+ .error{
+   color: rgb(139, 0, 0);
+ }
