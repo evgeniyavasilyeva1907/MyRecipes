@@ -4,7 +4,7 @@ import recipesService from '../service/recipesService';
 
 function* addRecipe(action) {
   try {
-   // let recipe = yield call(recipesService.addRecipe, action.payload);
+    //let recipe = yield call(recipesService.addRecipe, action.payload);
     yield put(Actions['RECIPES/FETCH_RECIPES_ADD_SUCCESSFULLY'](action.payload))
   }
   catch ({ message }) {
