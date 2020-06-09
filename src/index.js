@@ -10,11 +10,11 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter as Router} from "react-router-dom";
-import mySaga from './sagas/sagas'
+import mySaga from './sagas/recipesSaga'
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(logger, sagaMiddleware))
-//sagaMiddleware.run(mySaga);
+sagaMiddleware.run(mySaga);
 
 ReactDOM.render(
   <React.StrictMode>
