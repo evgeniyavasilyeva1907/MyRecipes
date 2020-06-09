@@ -7,11 +7,12 @@ function AddPage(props) {
   const { saveRecipe, match, myRecipes, editRecipe, history } = props;
   const id = + match.params.recipeId;
   const recipe = myRecipes.find((elem) => elem.id === id);
-  function submitAdd(values) {
+
+  const submitAdd = (values) => {
     saveRecipe(values);
   }
 
-  function submitEdit(values) {
+  const submitEdit = (values) => {
     editRecipe({ ...values, id })
     history.push("/showAllRecipes")
   }
