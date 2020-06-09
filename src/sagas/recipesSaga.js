@@ -1,23 +1,23 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
+import { call, put, takeLatest, all, select, takeEvery } from 'redux-saga/effects';
 import Actions from '../actions/recipe';
 import recipesService from '../service/recipesService';
 
-function* addRecipe(action) {
-  try {
-    //let recipe = yield call(recipesService.addRecipe, action.payload);
-    yield put(Actions['RECIPES/FETCH_RECIPES_ADD_SUCCESSFULLY'](action.payload))
+export const getRecepties = (state) => state.recipeList;
+
+
+function* loadFromLocal() {
+  let new_data = JSON.parse(localStorage.getItem("recipes"));
+  if (new_data == null) {
+    new_data = [];
   }
-  catch ({ message }) {
 
-  }
+  yield put({
+    type: 'RECIPES/FETCH_SET_RECIPES',
+    payload: new_data,
+  });
 }
 
-function* addRecipeSaga() {
+export function* sagaWatcher() {
+  yield takeEvery(Actions['RECIPES/FETCH_LOAD_DATA'], loadFromLocal);
+ }
 
-  yield takeLatest('RECIPES/FETCH_RECIPE_ADD', addRecipe);
-  debugger
-}
-
-export default function* recipesSaga() {
-  yield all([addRecipeSaga()]);
-}

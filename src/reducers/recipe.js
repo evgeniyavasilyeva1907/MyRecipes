@@ -24,7 +24,7 @@ const initialState = {
 
 
 const recipeReducer = handleActions({
-  
+
   [Actions['RECIPES/FETCH_RECIPES_ADD_SUCCESSFULLY']]: (state, action) => {
     counter++;
     return update(state, {
@@ -79,7 +79,17 @@ const recipeReducer = handleActions({
         { recipeList: fromState }
     }
     )
-  }
+  },
+  [Actions['RECIPES/FETCH_SET_RECIPES']]: (state, action) => {
+    const recipes = action.payload;
+    return update(
+      state, {
+      $merge:
+        { recipeList: recipes }
+    }
+    )
+  },
+
 
 }
 

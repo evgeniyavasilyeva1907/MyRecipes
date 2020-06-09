@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Switch,
   Route,
@@ -10,10 +10,17 @@ import AddPage from './containers/AddPage';
 import MyRecipe from './containers/MyRecipes';
 import RecipeList from './components/RecipeList'
 import SingleRecipe from './containers/SingleRecipe';
-import RemoveButton from './components/RemoveButton'
+import RemoveButton from './components/RemoveButton';
+import { useDispatch } from "react-redux";
+import Actions from './actions/recipe'
 
 function App() {
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(Actions['RECIPES/FETCH_LOAD_DATA']);
+  }, []);
   return (
     <div className='color'>
     <div className='container'>
