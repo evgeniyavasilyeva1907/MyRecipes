@@ -1,10 +1,10 @@
 const DATA_KEY = "DATA_KEY";
 
-function RecipesService() {
-
-     const save= ()=> {
-        console.log('ok')
+class RecipesService {
+    async addRecipe(recipe) {
+      //  return window.localStorage.setItem(DATA_KEY,recipe);
     }
 }
 
-export default  RecipesService();
+
+export default new RecipesService();
