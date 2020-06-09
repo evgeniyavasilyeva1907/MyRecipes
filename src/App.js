@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     dispatch(Actions['RECIPES/FETCH_LOAD_DATA']);
-  }, []);
+  }, [dispatch]);
   return (
     <div className='color'>
     <div className='container'>

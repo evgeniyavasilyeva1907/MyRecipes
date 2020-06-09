@@ -1,44 +1,35 @@
-import {
-    call,
-    put,
-    takeLatest,
-    all,
-    select,
-    takeEvery,
-  } from "redux-saga/effects";
-  import Actions from "../actions/recipe";
-  
-  export const getRecepties = (state) => {
+import { call, put, select, takeEvery, } from "redux-saga/effects";
+
+export const getRecepties = (state) => {
     console.log("Take: " + state.recipe.recipeList);
     return state.recipe.recipeList;
-  };
-  
-  function* loadFromLocal() {
+};
+
+function* loadFromLocal() {
     console.log("we here!");
     let new_data = JSON.parse(localStorage.getItem("recipes"));
     if (new_data == null) {
-      new_data = [];
+        new_data = [];
     }
-  
+
     yield put({
-      type: "RECIPES/FETCH_SET_RECIPES",
-      payload: new_data,
+        type: "RECIPES/FETCH_SET_RECIPES",
+        payload: new_data,
     });
-  }
-  
-  function* saveToLocal() {
+}
+
+function* saveToLocal() {
     let data = yield select(getRecepties);
-  
+
     yield call(function () {
-      localStorage.setItem("recipes", JSON.stringify(data));
+        localStorage.setItem("recipes", JSON.stringify(data));
     });
-  }
-  
-  export function* sagaWatcher() {
+}
+
+export function* sagaWatcher() {
     yield takeEvery("RECIPES/FETCH_LOAD_DATA", loadFromLocal);
-  
     yield takeEvery("RECIPES/FETCH_RECIPES_ADD_SUCCESSFULLY", saveToLocal);
     yield takeEvery("RECIPES/FETCH_RECIPES_REMOVE_ALL", saveToLocal);
     yield takeEvery("RECIPES/FETCH_RECIPE_EDIT", saveToLocal);
     yield takeEvery("RECIPES/FETCH_RECIPE_REMOVE", saveToLocal);
-  }
+}
