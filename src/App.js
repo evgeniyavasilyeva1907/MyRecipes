@@ -27,7 +27,7 @@ function App() {
       <div className='header'>Мои рецепты</div>
       <div className='viewRecipes'>
       <div className='Menu'>
-        <NavLink activeClassName='active' to="/" exact><button className="menuButton">Мои рецепты</button></NavLink>
+        <NavLink activeClassName='active' to="/" exact><button className="menuButton">Главная страница</button></NavLink>
         <NavLink activeClassName='active' to="/addNewRecipe"><button  className="menuButton">Добавить новый рецепт</button></NavLink>
         <NavLink activeClassName='active' to="/showAllRecipes"><button  className="menuButton">Сохраненные рецепты</button></NavLink>
         <RecipeList/>
