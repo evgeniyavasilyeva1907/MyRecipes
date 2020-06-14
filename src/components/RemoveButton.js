@@ -1,14 +1,54 @@
 import { connect } from 'react-redux';
 import Actions from '../actions/recipe';
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from "react-router";
+import Modal from 'react-modal'
 
-function RemoveAll({ remove, history }) {
+
+function RemoveAll({ remove, history, myRecipes }) {
+ 
+    const [modalOpen, setOpen] = useState(false);
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    };
     const removeAll = () => {
         remove();
+        setOpen(false)
         history.push('/')
     }
-    return (<button className="menuButton" onClick={removeAll.bind(this)}>Удалить все рецепты</button>)
+
+    const openModal = () => {
+        if (myRecipes.length) setOpen(true)
+    }
+
+    const closeModal = () => {
+        setOpen(false)
+        history.push('/')
+    }
+
+
+    return (<div>
+        <Modal
+            isOpen={modalOpen}
+            onRequestClose={closeModal}
+            contentLabel="Example Modal"
+            style={customStyles}
+            ariaHideApp={false}
+        >   <div className='modal'>
+                <div className="recipeTitle">Вы уверены, что хотите удалить все рецепты?</div>
+                <button className="recipeButton" onClick={removeAll}>Да, уверен</button>
+                <button className="recipeButton" onClick={closeModal}>Отмена</button>
+            </div>
+        </Modal>
+        <button className="menuButton" onClick={openModal}>Удалить все рецепты</button>
+    </div>)
 }
 
 const mapDispatchToProps = dispatch => {
@@ -17,7 +57,13 @@ const mapDispatchToProps = dispatch => {
     }
 
 };
+const mapStateToProps = state => {
+
+    return {
+        myRecipes: state.recipe.recipeList
+    };
+};
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(withRouter(RemoveAll));

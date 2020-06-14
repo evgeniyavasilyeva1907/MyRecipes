@@ -166,3 +166,8 @@ textarea {
  .error{
    color: rgb(139, 0, 0);
  }
+ .modal {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+ }

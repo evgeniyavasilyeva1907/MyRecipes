@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field} from 'formik';
+import { Formik, Form, Field } from 'formik';
 import BasicFormSchema from './BasicFormSchema';
 
 
@@ -10,6 +10,7 @@ function AddPage(props) {
 
   const submitAdd = (values) => {
     saveRecipe(values);
+   // history.push("/showAllRecipes")
   }
 
   const submitEdit = (values) => {
@@ -23,31 +24,29 @@ function AddPage(props) {
   }
 
   return (
+    <div>
+      <Formik
+        initialValues={{
+          title: (recipe && recipe.title) || '',
+          description: (recipe && recipe.description) || ''
+        }}
+        validationSchema={BasicFormSchema}
+        onSubmit={submit}>
 
-
-    <Formik
-      initialValues={{
-        title: (recipe && recipe.title) || '',
-        description: (recipe && recipe.description) || ''
-      }}
-      validationSchema={BasicFormSchema}
-      onSubmit={submit}>
-
-      {({ isSubmitting, errors, touched }) => (
-        <Form className='AddForm'>
-          <label htmlFor="title">Название рецепта</label>
-          <Field name="title" type='text' placeholder='Название рецепта' />
-          {errors.title && touched.title ? (<div className="error">{errors.title}</div>) : null}
-          <label htmlFor='description'>Описание рецепта </label>
-          <Field component='textarea' name="description" placeholder='Описание рецепта' />
-          {errors.description && touched.description ? (<div className="error">{errors.description}</div>) : null}
-          <button className='recipeButton' type="submit" disabled={isSubmitting}>Сохранить</button>
-          <button className='recipeButton' type='reset'>Отменить</button>
-        </Form>
-      )}
-    </Formik>
-
-
+        {({ isSubmitting, errors, touched }) => (
+          <Form className='AddForm'>
+            <label htmlFor="title">Название рецепта</label>
+            <Field name="title" type='text' placeholder='Название рецепта' />
+            {errors.title && touched.title ? (<div className="error">{errors.title}</div>) : null}
+            <label htmlFor='description'>Описание рецепта </label>
+            <Field component='textarea' name="description" placeholder='Описание рецепта' />
+            {errors.description && touched.description ? (<div className="error">{errors.description}</div>) : null}
+            <button className='recipeButton' type="submit" disabled={isSubmitting}>Сохранить</button>
+            <button className='recipeButton' type='reset'>Отменить</button>
+          </Form>
+        )}
+      </Formik>
+    </div>
   )
 }
 
