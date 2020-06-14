@@ -21,8 +21,6 @@ const initialState = {
   recipeList,
 };
 
-
-
 const recipeReducer = handleActions({
 
   [Actions['RECIPES/FETCH_RECIPES_ADD_SUCCESSFULLY']]: (state, action) => {

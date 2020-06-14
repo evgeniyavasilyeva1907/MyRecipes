@@ -43,11 +43,11 @@ function AddPage(props) {
     else submitAdd(values)
     methods.resetForm();
   }
-  const reset =() => {
+  const reset = () => {
     if (match.params.hasOwnProperty('recipeId')) resetEdit()
     else resetAdd()
   }
-  const  resetAdd = () =>{
+  const resetAdd = () => {
     history.push("/")
   }
   const resetEdit = (clean) => {
