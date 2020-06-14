@@ -13,6 +13,7 @@ import SingleRecipe from './containers/SingleRecipe';
 import RemoveButton from './components/RemoveButton';
 import { useDispatch } from "react-redux";
 import Actions from './actions/recipe'
+import { connect } from 'react-redux';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
   useEffect(() => {
     dispatch(Actions['RECIPES/FETCH_LOAD_DATA']);
   }, [dispatch]);
-  
+
   return (
     <div className='color'>
     <div className='container'>
@@ -58,5 +59,14 @@ function App() {
 
   );
 }
+const mapDispatchToProps = dispatch => {
+  return {
+      load: () => dispatch(Actions['RECIPES/FETCH_LOAD_DATA']())
+  }
 
-export default App;
+};
+
+export default connect (
+  null,
+  mapDispatchToProps
+) (App);
