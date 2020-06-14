@@ -1,5 +1,7 @@
 import { call, put, select, takeEvery, } from "redux-saga/effects";
 
+import Actions from './../actions/recipe';
+
 export const getRecepties = (state) => {
     console.log("Take: " + state.recipe.recipeList);
     return state.recipe.recipeList;
@@ -27,9 +29,9 @@ function* saveToLocal() {
 }
 
 export function* sagaWatcher() {
-    yield takeEvery("RECIPES/FETCH_LOAD_DATA", loadFromLocal);
-    yield takeEvery("RECIPES/FETCH_RECIPES_ADD_SUCCESSFULLY", saveToLocal);
-    yield takeEvery("RECIPES/FETCH_RECIPES_REMOVE_ALL", saveToLocal);
-    yield takeEvery("RECIPES/FETCH_RECIPE_EDIT", saveToLocal);
-    yield takeEvery("RECIPES/FETCH_RECIPE_REMOVE", saveToLocal);
+    yield takeEvery(Actions["RECIPES/FETCH_LOAD_DATA"], loadFromLocal);
+    yield takeEvery(Actions["RECIPES/FETCH_RECIPES_ADD_SUCCESSFULLY"], saveToLocal);
+    yield takeEvery(Actions["RECIPES/FETCH_RECIPES_REMOVE_ALL"], saveToLocal);
+    yield takeEvery(Actions["RECIPES/FETCH_RECIPE_EDIT"], saveToLocal);
+    yield takeEvery(Actions["RECIPES/FETCH_RECIPE_REMOVE"], saveToLocal);
 }
